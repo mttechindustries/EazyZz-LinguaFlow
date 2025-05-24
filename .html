@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyZz LinguaFlow - Wake Up Fluent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0a12;
+            color: #e0e0ff;
+            overflow-x: hidden;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 8px rgba(110, 255, 150, 0.7);
+        }
+        
+        .neon-border {
+            box-shadow: 0 0 12px rgba(110, 255, 150, 0.5);
+        }
+        
+        .neon-button {
+            transition: all 0.3s ease;
+        }
+        
+        .neon-button:hover {
+            box-shadow: 0 0 20px rgba(110, 255, 150, 0.7);
+            transform: translateY(-2px);
+        }
+        
+        .brain-pulse {
+            animation: pulse 4s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        
+        .theta-wave {
+            animation: wave 6s infinite linear;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(5px) translateY(-3px); }
+            50% { transform: translateX(0) translateY(0); }
+            75% { transform: translateX(-5px) translateY(3px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+        
+        .language-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .language-icon:hover {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7));
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card {
+            transition: all 0.5s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(110, 255, 150, 0.3);
+        }
+        
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(110, 255, 150, 0.3);
+        }
+        
+        .pro-card {
+            border: 2px solid #6eff96;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .pro-card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #6eff96;
+            border-radius: 0.5rem;
+            z-index: -1;
+            animation: borderPulse 3s infinite;
+        }
+        
+        @keyframes borderPulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(110, 255, 150, 0.7);
+        }
+        
+        .neon-link {
+            position: relative;
+        }
+        
+        .neon-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #6eff96;
+            transition: width 0.3s ease;
+        }
+        
+        .neon-link:hover::after {
+            width: 100%;
+        }
+        
+        .moon {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .moon:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 150, 0.7));
+        }
+        
+        .clicked {
+            animation: moonClick 0.5s;
+        }
+        
+        @keyframes moonClick {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .hidden-lullaby {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(10, 10, 18, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #6eff96;
+            box-shadow: 0 0 20px rgba(110, 255, 150, 0.5);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <nav class="bg-black bg-opacity-80 backdrop-blur-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-brain text-3xl text-green-400 mr-2 brain-pulse"></i>
+                        <span class="text-xl font-bold text-white">EasyZz <span class="text-green-400">LinguaFlow</span></span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#science" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-link">Science</a>
+                        <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-link">Features</a>
+                        <a href="#pricing" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-link">Pricing</a>
+                        <a href="#testimonials" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium neon-link">Testimonials</a>
+                    </div>
+                </div>
+                <div class="md:ml-4 md:flex md:items-center md:shrink-0">
+                    <button class="neon-button bg-gradient-to-r from-green-500 to-green-700 text-white px-6 py-2 rounded-full font-medium text-sm">
+                        Join Waitlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 neon-text">
+                        WASTE 8 HOURS SLEEPING?<br>
+                        <span class="text-green-400">OR WAKE UP FLUENT.</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8">
+                        <span class="italic">EasyZz LinguaFlow:</span> The EEG-Powered Language App That Rewires Your Brain While You Snore.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <button class="neon-button bg-gradient-to-r from-green-500 to-green-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center">
+                            Join the Waitlist → 
+                            <span class="ml-2 text-xs bg-black bg-opacity-30 px-2 py-1 rounded-full">First 500 Get 50% Off</span>
+                        </button>
+                        <button class="neon-button border-2 border-green-500 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center">
+                            How It Works ▶️
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex -space-x-2">
+                            <img class="w-10 h-10 rounded-full border-2 border-gray-800" src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
+                            <img class="w-10 h-10 rounded-full border-2 border-gray-800" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                            <img class="w-10 h-10 rounded-full border-2 border-gray-800" src="https://randomuser.me/api/portraits/women/45.jpg" alt="">
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            <span class="text-green-400 font-medium">1,200+</span> beta testers already learning
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-green-500 rounded-2xl opacity-20 blur-3xl"></div>
+                        <div class="relative bg-gray-900 bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
+                            <div class="flex justify-center mb-6">
+                                <i class="fas fa-brain text-6xl text-green-400 theta-wave"></i>
+                            </div>
+                            <div class="flex justify-around mb-8">
+                                <div class="language-icon text-4xl" title="Spanish">🇪🇸</div>
+                                <div class="language-icon text-4xl" title="Mandarin">🇨🇳</div>
+                                <div class="language-icon text-4xl" title="Python">🐍</div>
+                                <div class="language-icon text-4xl" title="French">🇫🇷</div>
+                                <div class="language-icon text-4xl" title="Japanese">🇯🇵</div>
+                            </div>
+                            <div class="bg-black rounded-lg p-4">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
+                                    <div class="text-xs text-gray-500 ml-auto">EEG Syncing...</div>
+                                </div>
+                                <div class="h-2 bg-gray-800 rounded-full mb-2">
+                                    <div class="h-2 bg-green-500 rounded-full" style="width: 75%"></div>
+                                </div>
+                                <div class="text-xs text-gray-400 flex justify-between">
+                                    <span>Theta Waves: Optimal</span>
+                                    <span>37% Retention Boost</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Neurohacked Advantage -->
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text">
+                The <span class="text-green-400">Neurohacked</span> Advantage
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Column 1 -->
+                <div class="bg-gray-800 bg-opacity-60 rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-300">
+                    <div class="flex justify-center mb-6">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Sleep learning" class="rounded-lg h-40 w-full object-cover opacity-90">
+                            <div class="absolute inset-0 bg-green-500 bg-opacity-10"></div>
+                            <div class="absolute top-4 right-4 bg-black bg-opacity-70 rounded-full p-2">
+                                <i class="fas fa-moon text-yellow-300 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-green-400">Sleep-Learning Engine</h3>
+                    <p class="text-gray-300 mb-4">
+                        <span class="font-semibold">Theta Bursts During Deep Sleep</span><br>
+                        - Replay daytime lessons<br>
+                        - Stanford-validated 37% retention boost
+                    </p>
+                    <button class="text-green-400 text-sm font-medium flex items-center neon-link">
+                        See the Science <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="bg-gray-800 bg-opacity-60 rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-300">
+                    <div class="flex justify-center mb-6">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Wakeful hacks" class="rounded-lg h-40 w-full object-cover opacity-90">
+                            <div class="absolute inset-0 bg-blue-500 bg-opacity-10"></div>
+                            <div class="absolute top-4 right-4 bg-black bg-opacity-70 rounded-full p-2">
+                                <i class="fas fa-headphones text-purple-300 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-blue-400">Wakeful Hacks</h3>
+                    <p class="text-gray-300 mb-4">
+                        <span class="font-semibold">DNEA Soundscapes</span><br>
+                        - Hide Spanish in café noise<br>
+                        - Your subconscious does the work
+                    </p>
+                    <button class="text-blue-400 text-sm font-medium flex items-center neon-link">
+                        Try Demo <i class="fas fa-play-circle ml-2"></i>
+                    </button>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="bg-gray-800 bg-opacity-60 rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-300">
+                    <div class="flex justify-center mb-6">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1629909613654-28e37786f6bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1664&q=80" alt="Biometric mastery" class="rounded-lg h-40 w-full object-cover opacity-90">
+                            <div class="absolute inset-0 bg-purple-500 bg-opacity-10"></div>
+                            <div class="absolute top-4 right-4 bg-black bg-opacity-70 rounded-full p-2">
+                                <i class="fas fa-heartbeat text-red-400 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-purple-400">Biometric Mastery</h3>
+                    <p class="text-gray-300 mb-4">
+                        <span class="font-semibold">Adaptive AI Tutor</span><br>
+                        - Adjusts difficulty based on focus<br>
+                        - No more 'Je ne sais pas' meltdowns
+                    </p>
+                    <button class="text-purple-400 text-sm font-medium flex items-center neon-link">
+                        Meet NeuroDash <i class="fas fa-chart-line ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Ecosystem -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-black bg-opacity-70">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text">
+                The <span class="text-green-400">EasyZz</span> Ecosystem
+            </h2>
+            
+            <div class="relative overflow-hidden">
+                <div class="flex transition-transform duration-500" id="carousel">
+                    <!-- Card 1 -->
+                    <div class="carousel-item w-full">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col md:flex-row">
+                            <div class="md:w-1/2 p-8 md:p-12">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-green-900 bg-opacity-40 rounded-lg p-2 mr-4">
+                                        <i class="fas fa-mobile-alt text-green-400 text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">LinguaFlow App</h3>
+                                </div>
+                                <ul class="space-y-3 mb-6">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                                        <span>Sleep replay scheduling</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                                        <span>50+ DNEA soundscapes (cafés, trains, alien planets)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
+                                        <span>"NeuroGym" AI conversation simulator</span>
+                                    </li>
+                                </ul>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold mr-4">$19/mo</span>
+                                    <span class="text-green-400 text-sm bg-green-900 bg-opacity-30 px-2 py-1 rounded">Free 14-day trial</span>
+                                </div>
+                                <button class="mt-6 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium">
+                                    Download Now
+                                </button>
+                            </div>
+                            <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-8">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1611267254323-4db7b39c732c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1664&q=80" alt="App screenshot" class="rounded-lg shadow-2xl max-h-96">
+                                    <div class="absolute -bottom-4 -right-4 bg-black bg-opacity-80 rounded-lg p-3 border border-gray-700">
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
+                                            <span class="text-xs">Active Learning</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="carousel-item w-full">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col md:flex-row">
+                            <div class="md:w-1/2 p-8 md:p-12">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-blue-900 bg-opacity-40 rounded-lg p-2 mr-4">
+                                        <i class="fas fa-headband text-blue-400 text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">EasyZz SleepBand</h3>
+                                </div>
+                                <ul class="space-y-3 mb-6">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-400 mt-1 mr-2"></i>
+                                        <span>Sleek headband with textile EEG sensors</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-400 mt-1 mr-2"></i>
+                                        <span>Qi wireless charging</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-400 mt-1 mr-2"></i>
+                                        <span>FDA-cleared sleep staging</span>
+                                    </li>
+                                </ul>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold mr-4">$249</span>
+                                    <span class="text-blue-400 text-sm bg-blue-900 bg-opacity-30 px-2 py-1 rounded">or $29/mo subscription</span>
+                                </div>
+                                <button class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium">
+                                    Pre-order Now
+                                </button>
+                            </div>
+                            <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-8">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="SleepBand" class="rounded-lg shadow-2xl max-h-96">
+                                    <div class="absolute -bottom-4 -right-4 bg-black bg-opacity-80 rounded-lg p-3 border border-gray-700">
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
+                                            <span class="text-xs">Syncing to App</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="carousel-item w-full">
+                        <div class="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col md:flex-row">
+                            <div class="md:w-1/2 p-8 md:p-12">
+                                <div class="flex items-center mb-4">
+                                    <div class="bg-purple-900 bg-opacity-40 rounded-lg p-2 mr-4">
+                                        <i class="fas fa-usb-drive text-purple-400 text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold">SkillStick™</h3>
+                                </div>
+                                <ul class="space-y-3 mb-6">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-purple-400 mt-1 mr-2"></i>
+                                        <span>Learn During Traffic Jams</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-purple-400 mt-1 mr-2"></i>
+                                        <span>Japanese embedded in lo-fi beats</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-purple-400 mt-1 mr-2"></i>
+                                        <span>Plug-and-play with car stereo, headphones, speakers</span>
+                                    </li>
+                                </ul>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold mr-4">$99</span>
+                                    <span class="text-purple-400 text-sm bg-purple-900 bg-opacity-30 px-2 py-1 rounded">Free with Pro Plan</span>
+                                </div>
+                                <button class="mt-6 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-medium">
+                                    Add to Cart
+                                </button>
+                            </div>
+                            <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-8">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="SkillStick" class="rounded-lg shadow-2xl max-h-96">
+                                    <div class="absolute -bottom-4 -right-4 bg-black bg-opacity-80 rounded-lg p-3 border border-gray-700">
+                                        <div class="flex items-center">
+                                            <div class="w-3 h-3 rounded-full bg-purple-500 mr-2"></div>
+                                            <span class="text-xs">Active Mode</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button onclick="moveCarousel(-1)" class="w-3 h-3 rounded-full bg-gray-700 hover:bg-green-500 focus:outline-none carousel-indicator" data-index="0"></button>
+                    <button onclick="moveCarousel(-1)" class="w-3 h-3 rounded-full bg-gray-700 hover:bg-blue-500 focus:outline-none carousel-indicator" data-index="1"></button>
+                    <button onclick="moveCarousel(-1)" class="w-3 h-3 rounded-full bg-gray-700 hover:bg-purple-500 focus:outline-none carousel-indicator" data-index="2"></button>
+                </div>
+                
+                <button onclick="moveCarousel(-1)" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-70 text-white p-3 rounded-full ml-4 hover:bg-gray-800">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button onclick="moveCarousel(1)" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-70 text-white p-3 rounded-full mr-4 hover:bg-gray-800">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text">
+                Choose Your <span class="text-green-400">Neurohacker</span> Tier
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic -->
+                <div class="pricing-card bg-gray-900 rounded-xl p-8 border border-gray-800">
+                    <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                    <p class="text-gray-400 mb-6">For casual language dabblers</p>
+                    <div class="text-4xl font-bold mb-6">$19<span class="text-lg text-gray-400">/mo</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>1 Language</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Theta waves only</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>5 Soundscapes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Chat support</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-lg font-medium">
+                        Start Now
+                    </button>
+                </div>
+                
+                <!-- Pro -->
+                <div class="pricing-card pro-card bg-gray-900 rounded-xl p-8">
+                    <div class="absolute top-0 right-0 bg-green-500 text-black text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl">POPULAR</div>
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <p class="text-gray-400 mb-6">For serious language hackers</p>
+                    <div class="text-4xl font-bold mb-6">$49<span class="text-lg text-gray-400">/mo</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>5 Languages</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Theta + Gamma waves</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>50+ Soundscapes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Priority support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Free SkillStick™</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium">
+                        Go Pro
+                    </button>
+                </div>
+                
+                <!-- NeuroOverlord -->
+                <div class="pricing-card bg-gray-900 rounded-xl p-8 border border-gray-800">
+                    <h3 class="text-2xl font-bold mb-2">NeuroOverlord™</h3>
+                    <p class="text-gray-400 mb-6">For language domination</p>
+                    <div class="text-4xl font-bold mb-6">$299<span class="text-lg text-gray-400">/mo</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Unlimited Languages</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Custom frequencies</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Build your own soundscapes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>24/7 Concierge</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>Early beta features</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
+                            <span>All hardware included</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-medium">
+                        Dominate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text">
+                They <span class="text-green-400">Dreamed</span> in Code
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="testimonial-card bg-gray-800 rounded-xl p-8 border border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-quote-left text-green-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">@CodeHustler</h4>
+                            <p class="text-sm text-gray-400">Reddit Biohacker</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic mb-6">
+                        "I dreamed in Italian. Woke up and argued with a barista. 10/10."
+                    </p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="testimonial-card bg-gray-800 rounded-xl p-8 border border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-user-secret text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">CEO @ Stealth Startup</h4>
+                            <p class="text-sm text-gray-400">Verified User</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic mb-6">
+                        "Finally, an app that doesn't treat my ADHD brain like a toddler."
+                    </p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="testimonial-card bg-gray-800 rounded-xl p-8 border border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-cat text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Anonymous</h4>
+                            <p class="text-sm text-gray-400">Discord</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic mb-6">
+                        "My cat learned French. Send help."
+                    </p>
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science & Safety -->
+    <section id="science" class="py-20 px-4 sm:px-6 lg:px-8 bg-black bg-opacity-80">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text">
+                Backed by <span class="text-green-400">Science</span>,<br>
+                Not Sci-Fi
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 mb-8">
+                        <h3 class="text-xl font-bold mb-4 text-green-400">Peer-Validated Research</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-green-900 bg-opacity-30 rounded-lg p-3 mr-4">
+                                    <i class="fas fa-university text-green-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Stanford Study</h4>
+                                    <p class="text-gray-400 text-sm">37% higher retention vs. placebo in language acquisition during sleep.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-900 bg-opacity-30 rounded-lg p-3 mr-4">
+                                    <i class="fas fa-brain text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">MIT Gamma Research</h4>
+                                    <p class="text-gray-400 text-sm">Auditory-driven synaptic plasticity enhancement through targeted frequencies.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-purple-900 bg-opacity-30 rounded-lg p-3 mr-4">
+                                    <i class="fas fa-shield-alt text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Ethics Board Approved</h4>
+                                    <p class="text-gray-400 text-sm">No sketchy zapping. All methods are non-invasive and FDA-cleared.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
+                        <h3 class="text-xl font-bold mb-6 text-green-400">Red Team Q&A</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-blue-400 mb-1">"Is this placebo?"</h4>
+                                <p class="text-gray-400 text-sm mb-4">Sham-controlled trial data shows statistically significant improvements in recall and comprehension.</p>
+                                <div class="h-1 bg-gray-800 rounded-full">
+                                    <div class="h-1 bg-green-500 rounded-full" style="width: 87%"></div>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1 flex justify-between">
+                                    <span>Placebo Group</span>
+                                    <span>LinguaFlow Group</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-blue-400 mb-1">"Can I learn Klingon?"</h4>
+                                <p class="text-gray-400 text-sm">Yes, but we won't judge. Our system works with any constructed or natural language.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-blue-400 mb-1">"Will this mess with my sleep?"</h4>
+                                <p class="text-gray-400 text-sm">Our algorithms only activate during optimal sleep stages, with no disruption to sleep architecture.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-green-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 neon-text">
+                Ready to <span class="text-green-400 glow-text">Rewire</span> Your Brain?
+            </h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                Join thousands of neurohackers who are learning languages in their sleep. Your future fluent self thanks you.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="neon-button bg-gradient-to-r from-green-500 to-green-700 text-white px-8 py-4 rounded-full font-bold text-lg">
+                    Join the Waitlist → 
+                    <span class="ml-2 text-xs bg-black bg-opacity-30 px-2 py-1 rounded-full">First 500 Get 50% Off</span>
+                </button>
+                <button class="neon-button border-2 border-green-500 text-white px-8 py-4 rounded-full font-bold text-lg">
+                    See Demo ▶️
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-brain text-3xl text-green-400 mr-2"></i>
+                        <span class="text-xl font-bold text-white">EasyZz <span class="text-green-400">LinguaFlow</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Powered by Cognitive Neuroscience & Rebellious Innovation.
+                    </p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-green-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-400"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-green-400"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">App</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">SleepBand</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">SkillStick™</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Science</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Community</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Newsletter</h3>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Get a FREE 'Neurohacker' Sleep Track (No Spam, Just Gamma Waves).
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-green-500 w-full text-sm">
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-r-lg text-sm">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800">
+                <div class="md:flex md:items-center md:justify-between">
+                    <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                        <span class="text-gray-500 text-sm">As seen in:</span>
+                        <span class="text-gray-400 text-sm font-medium">WIRED</span>
+                        <span class="text-gray-400 text-sm font-medium">TechCrunch</span>
+                        <span class="text-gray-400 text-sm font-medium">Sleep Weekly</span>
+                    </div>
+                    <div class="text-gray-500 text-sm">
+                        <span class="moon" id="moon" title="Click me 3 times"><i class="fas fa-moon"></i></span>
+                        <span class="ml-4">© 2023 EasyZz LinguaFlow. All rights reserved.</span>
+                    </div>
+                </div>
+                <div class="mt-4 text-xs text-gray-600">
+                    Not a medical device. Results vary. May cause polyglot smugness.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Easter Egg -->
+    <div id="lullaby" class="hidden-lullaby">
+        <div class="flex justify-between items-center mb-2">
+            <span class="text-green-400 font-medium">Secret Lullaby Mode</span>
+            <button onclick="closeLullaby()" class="text-gray-400 hover:text-white">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex items-center">
+            <i class="fas fa-music text-yellow-300 mr-2"></i>
+            <span class="text-sm">Never Gonna Give You Up (Lullaby Version)</span>
+        </div>
+        <div class="mt-2 flex items-center">
+            <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-xs mr-2">
+                <i class="fas fa-play"></i>
+            </button>
+            <div class="w-full bg-gray-700 rounded-full h-1">
+                <div class="bg-green-500 h-1 rounded-full" style="width: 30%"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Carousel functionality
+        let currentIndex = 0;
+        const carousel = document.getElementById('carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        
+        function moveCarousel(direction) {
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = items.length - 1;
+            } else if (currentIndex >= items.length) {
+                currentIndex = 0;
+            }
+            
+            const offset = -currentIndex * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('bg-green-500');
+                    indicator.classList.remove('bg-gray-700');
+                } else {
+                    indicator.classList.remove('bg-green-500');
+                    indicator.classList.add('bg-gray-700');
+                }
+            });
+        }
+        
+        // Auto-rotate carousel
+        setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+        
+        // Moon click easter egg
+        let clickCount = 0;
+        const moon = document.getElementById('moon');
+        const lullaby = document.getElementById('lullaby');
+        
+        moon.addEventListener('click', () => {
+            moon.classList.add('clicked');
+            setTimeout(() => {
+                moon.classList.remove('clicked');
+            }, 500);
+            
+            clickCount++;
+            
+            if (clickCount === 3) {
+                lullaby.style.display = 'block';
+                clickCount = 0;
+            }
+        });
+        
+        function closeLullaby() {
+            lullaby.style.display = 'none';
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
