@@ -14,6 +14,7 @@
             background-color: #0a0a12; /* Slightly darker base */
             color: #e0e0ff;
             overflow-x: hidden;
+            scroll-behavior: smooth; /* Added for smooth scrolling */
         }
         
         .neon-text {
@@ -91,7 +92,6 @@
             border: 2px solid #6eff96;
             position: relative;
             z-index: 10;
-            /* transform: scale(1.05); Initially slightly larger */
         }
         
         .pro-card::before {
@@ -102,7 +102,7 @@
             right: -6px;
             bottom: -6px;
             border: 2px solid #6eff96;
-            border-radius: 0.6rem; /* Slightly larger radius */
+            border-radius: 0.6rem; 
             z-index: -1;
             animation: borderPulse 2.5s infinite;
         }
@@ -114,18 +114,18 @@
         }
         
         .glow-text {
-            text-shadow: 0 0 10px rgba(110, 255, 150, 0.7), 0 0 20px rgba(110, 255, 150, 0.5); /* Stronger glow */
+            text-shadow: 0 0 10px rgba(110, 255, 150, 0.7), 0 0 20px rgba(110, 255, 150, 0.5);
         }
         
         .neon-link {
             position: relative;
-            padding-bottom: 2px; /* Space for underline */
+            padding-bottom: 2px; 
         }
         
         .neon-link::after {
             content: '';
             position: absolute;
-            bottom: 0; /* Adjusted for padding */
+            bottom: 0; 
             left: 50%;
             transform: translateX(-50%);
             width: 0;
@@ -164,7 +164,7 @@
             bottom: 20px;
             right: 20px;
             z-index: 1000;
-            background: rgba(10, 10, 18, 0.95); /* Darker, more opaque */
+            background: rgba(10, 10, 18, 0.95);
             padding: 15px;
             border-radius: 10px;
             border: 1px solid #6eff96;
@@ -172,17 +172,16 @@
         }
 
         .section-subtitle {
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
-            color: #a0a0cc; /* Softer than main text */
-            max-width: 3xl; /* 48rem */
+            font-size: 1.25rem; 
+            line-height: 1.75rem; 
+            color: #a0a0cc; 
+            max-width: 3xl; 
             margin-left: auto;
             margin-right: auto;
-            margin-bottom: 4rem; /* 64px */
+            margin-bottom: 4rem; 
             text-align: center;
         }
 
-        /* Feature Card Hover Effect Styles */
         .feature-card {
           position: relative;
           overflow: hidden;
@@ -194,45 +193,42 @@
           position: absolute;
           background: radial-gradient(
             800px circle at var(--mouse-x) var(--mouse-y),
-            rgba(110, 255, 150, 0.1), /* Greenish glow */
+            rgba(110, 255, 150, 0.1), 
             transparent 40%
           );
           width: 100%;
           height: 100%;
-          top: 0; /* Ensure it covers the whole card */
-          left: 0; /* Ensure it covers the whole card */
+          top: 0; 
+          left: 0; 
           opacity: 0;
           transition: opacity 0.3s;
-          z-index: 0; /* Ensure it's behind content */
+          z-index: 0; 
         }
 
         .feature-card:hover::before {
           opacity: 1;
         }
-        /* Ensure card content is above the pseudo-element */
         .feature-card > * {
             position: relative;
             z-index: 1;
         }
 
-        /* Sleep Stage Button Styles */
         .sleep-stage {
           @apply px-3 py-1 rounded-full bg-gray-800 text-gray-300 text-sm 
-                 transition-all hover:bg-green-500 hover:text-black;
+                 transition-all hover:bg-green-500 hover:text-black cursor-pointer; /* Added cursor-pointer */
         }
 
         .sleep-stage.active {
           @apply bg-green-600 text-white;
         }
 
-        /* Custom range input styling */
         input[type="range"] {
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
-            height: 8px; /* Slightly thicker */
-            background: #374151; /* Tailwind gray-700 */
-            border-radius: 9999px; /* rounded-full */
+            height: 8px; 
+            background: #374151; 
+            border-radius: 9999px; 
             outline: none;
             opacity: 0.7;
             transition: opacity .15s ease-in-out;
@@ -245,9 +241,9 @@
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px; /* Larger thumb */
+            width: 20px; 
             height: 20px;
-            background: #6eff96; /* Neon green */
+            background: #6eff96; 
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 0 8px rgba(110, 255, 150, 0.5);
@@ -259,10 +255,9 @@
             background: #6eff96;
             border-radius: 50%;
             cursor: pointer;
-            border: none; /* Remove default border for Firefox */
+            border: none; 
             box-shadow: 0 0 8px rgba(110, 255, 150, 0.5);
         }
-
     </style>
 </head>
 <body class="antialiased">
@@ -271,10 +266,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center"> <!-- Made logo a link to top -->
                         <i class="fas fa-brain text-3xl text-green-400 mr-2 brain-pulse"></i>
                         <span class="text-xl font-bold text-white">EasyZz <span class="text-green-400">LinguaFlow</span></span>
-                    </div>
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
@@ -285,9 +280,9 @@
                     </div>
                 </div>
                 <div class="md:ml-4 md:flex md:items-center md:shrink-0">
-                    <button class="neon-button bg-gradient-to-r from-green-500 to-green-700 text-white px-6 py-2 rounded-full font-medium text-sm">
+                    <a href="mailto:Easyzzlabs@gmail.com?subject=EasyZz%20LinguaFlow%20Waitlist%20Inquiry" class="neon-button bg-gradient-to-r from-green-500 to-green-700 text-white px-6 py-2 rounded-full font-medium text-sm">
                         Join Waitlist
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -306,13 +301,13 @@
                         <span class="italic">EasyZz LinguaFlow:</span> The EEG-Powered Language App That Leverages Neuroplasticity During Sleep—Actively Enhancing Your Brain For Fluency While You Snore.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                        <button class="neon-button bg-gradient-to-r from-green-500 to-green-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center">
+                        <a href="mailto:Easyzzlabs@gmail.com?subject=EasyZz%20LinguaFlow%20Early%20Access%20-%2050%25%20Off" class="neon-button bg-gradient-to-r from-green-500 to-green-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center">
                             Unlock Early Access → 
                             <span class="ml-2 text-xs bg-black bg-opacity-30 px-2 py-1 rounded-full">First 500: 50% Off</span>
-                        </button>
-                        <button class="neon-button border-2 border-green-500 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center">
+                        </a>
+                        <a href="#science" class="neon-button border-2 border-green-500 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center">
                             Watch The Science <i class="fas fa-flask ml-2"></i>
-                        </button>
+                        </a>
                     </div>
                     <div class="flex items-center space-x-4">
                         <div class="flex -space-x-2">
@@ -372,7 +367,6 @@
             </p>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- ADDED feature-card class -->
                 <div class="feature-card bg-gray-800 bg-opacity-60 rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-300 testimonial-card">
                     <div class="flex justify-center mb-6">
                         <div class="relative w-full h-40">
@@ -412,9 +406,9 @@
                         - Leverages auditory scene analysis for implicit pattern recognition.<br>
                         - Learn <span class="font-bold text-blue-300">passively</span> while you work or relax.
                     </p>
-                    <button class="text-blue-400 text-sm font-medium flex items-center neon-link">
+                    <a href="#neuro-simulator-section" class="text-blue-400 text-sm font-medium flex items-center neon-link">
                         Experience DNEA Demo <i class="fas fa-play-circle ml-2"></i>
-                    </button>
+                    </a>
                 </div>
                 
                 <div class="feature-card bg-gray-800 bg-opacity-60 rounded-xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-300 testimonial-card">
@@ -434,9 +428,9 @@
                         - AI tutor adjusts lesson intensity & provides infrasound stress relief (10-19Hz).<br>
                         - Say goodbye to learning plateaus and <span class="font-bold text-purple-300">cortisol spikes.</span>
                     </p>
-                    <button class="text-purple-400 text-sm font-medium flex items-center neon-link">
+                    <a href="#neuro-simulator-section" class="text-purple-400 text-sm font-medium flex items-center neon-link">
                         Meet Your AI Tutor <i class="fas fa-chart-line ml-2"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -486,9 +480,9 @@
                                     <span class="text-3xl font-bold mr-4 glow-text">$19<span class="text-xl text-gray-400">/mo</span></span>
                                     <span class="text-green-400 text-xs bg-green-900 bg-opacity-30 px-2 py-1 rounded-full">14-DAY FREE TRIAL</span>
                                 </div>
-                                <button class="mt-6 neon-button bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium text-base">
+                                <a href="#pricing" class="mt-6 neon-button bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium text-base inline-block text-center">
                                     Download Now
-                                </button>
+                                </a>
                             </div>
                             <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-8 relative">
                                 <img src="https://placehold.co/400x600/0a0a12/6eff96?text=App+Interface&font=spacegrotesk" alt="App screenshot" class="rounded-lg shadow-2xl max-h-96 border-2 border-green-700">
@@ -534,9 +528,9 @@
                                     <span class="text-3xl font-bold mr-4 glow-text">$249 <span class="text-gray-400 text-lg line-through">$299</span></span>
                                     <span class="text-blue-400 text-xs bg-blue-900 bg-opacity-30 px-2 py-1 rounded-full">PRE-ORDER BONUS</span>
                                 </div>
-                                <button class="mt-6 neon-button bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium text-base">
+                                <a href="mailto:Easyzzlabs@gmail.com?subject=EasyZz%20SleepBand%20Pro%20Pre-order" class="mt-6 neon-button bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium text-base inline-block text-center">
                                     Pre-order SleepBand
-                                </button>
+                                </a>
                             </div>
                             <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-8 relative">
                                 <img src="https://placehold.co/400x300/0a0a12/63b3ed?text=SleepBand+Pro&font=spacegrotesk" alt="SleepBand" class="rounded-lg shadow-2xl max-h-96 border-2 border-blue-700">
@@ -582,9 +576,9 @@
                                     <span class="text-3xl font-bold mr-4 glow-text">$99 <span class="text-gray-400 text-lg line-through">$129</span></span>
                                     <span class="text-purple-400 text-xs bg-purple-900 bg-opacity-30 px-2 py-1 rounded-full">FREE WITH PRO PLAN</span>
                                 </div>
-                                <button class="mt-6 neon-button bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium text-base">
+                                <a href="#pricing" class="mt-6 neon-button bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium text-base inline-block text-center">
                                     Get Your SkillStick™
-                                </button>
+                                </a>
                             </div>
                             <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-8 relative">
                                 <img src="https://placehold.co/300x300/0a0a12/a78bfa?text=SkillStick&font=spacegrotesk" alt="SkillStick" class="rounded-lg shadow-2xl max-h-96 border-2 border-purple-700">
@@ -616,7 +610,7 @@
     </section>
 
     <!-- Live Neuro-Simulation Section -->
-    <section class="neuro-simulator py-20 px-4">
+    <section id="neuro-simulator-section" class="neuro-simulator py-20 px-4"> <!-- Added ID -->
       <div class="max-w-4xl mx-auto bg-gray-900 rounded-2xl p-8 border border-green-500/30 neon-border">
         <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center text-green-400 neon-text">Live Neuro-Simulation</h3>
         <p class="text-center text-gray-400 mb-8 text-sm max-w-2xl mx-auto">
@@ -624,7 +618,7 @@
         </p>
         <div class="grid md:grid-cols-2 gap-8 items-center">
           <div class="relative h-64 md:h-80 bg-black rounded-xl overflow-hidden border border-gray-700">
-            <canvas id="eegCanvas" class="absolute inset-0 w-full h-full"></canvas> <!-- Ensure canvas fills div -->
+            <canvas id="eegCanvas" class="absolute inset-0 w-full h-full"></canvas>
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4">
               <div class="flex justify-between text-xs font-medium">
                 <span class="text-green-400 glow-text">Theta (4-8Hz)</span>
@@ -647,7 +641,7 @@
             </div>
             <div class="mb-6">
               <label class="text-gray-300 text-sm block mb-1">Simulated Sleep Depth</label>
-              <div class="flex space-x-2 flex-wrap gap-y-2">
+              <div class="flex space-x-2 flex-wrap gap-y-2"> <!-- Added flex-wrap and gap-y for responsiveness -->
                 <button class="sleep-stage active" data-stage="nrem1">NREM 1 (Light)</button>
                 <button class="sleep-stage" data-stage="nrem2">NREM 2 (Stable)</button>
                 <button class="sleep-stage" data-stage="nrem3">NREM 3 (Deep)</button>
@@ -676,40 +670,23 @@
             </p>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Basic -->
                 <div class="pricing-card bg-gray-900 rounded-xl p-8 border border-gray-800">
                     <h3 class="text-2xl font-bold mb-2">Explorer</h3>
                     <p class="text-gray-400 mb-6 text-sm">For casual language dabblers & curious minds</p>
                     <div class="text-4xl font-bold mb-1 glow-text">$19<span class="text-lg text-gray-400">/mo</span></div>
                     <p class="text-xs text-gray-500 mb-6">Billed monthly</p>
                     <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>1 Language Profile</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>EasyZz Sleep Learning (Theta Waves)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>10 DNEA™ Soundscapes</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-times text-red-400 mt-1 mr-3"></i>
-                            <span class="text-gray-500">Gamma Wave Enhancement</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Community Forum Access</span>
-                        </li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>1 Language Profile</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>EasyZz Sleep Learning (Theta Waves)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>10 DNEA™ Soundscapes</span></li>
+                        <li class="flex items-start"><i class="fas fa-times text-red-400 mt-1 mr-3"></i><span class="text-gray-500">Gamma Wave Enhancement</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Community Forum Access</span></li>
                     </ul>
-                    <button class="w-full bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-lg font-medium neon-button">
+                    <a href="mailto:Easyzzlabs@gmail.com?subject=Explorer%20Plan%20Signup" class="w-full neon-button bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-lg font-medium inline-block text-center">
                         Start Exploring
-                    </button>
+                    </a>
                 </div>
                 
-                <!-- Pro -->
                 <div class="pricing-card pro-card bg-gray-900 rounded-xl p-8 transform scale-105 md:scale-110">
                     <div class="absolute top-0 right-0 bg-green-500 text-black text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl">MOST POPULAR</div>
                     <h3 class="text-2xl font-bold mb-2">Neuro-Pioneer</h3>
@@ -717,71 +694,34 @@
                     <div class="text-4xl font-bold mb-1 glow-text">$49<span class="text-lg text-gray-400">/mo</span></div>
                     <p class="text-xs text-gray-500 mb-6">Save 20% with annual billing</p>
                     <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Up to 5 Language Profiles</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Advanced Sleep Learning (Theta + Gamma Waves)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Full DNEA™ Soundscape Library (50+)</span>
-                        </li>
-                         <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>NeuroDash™ Biometric AI Tutor</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Priority Email Support</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Includes SkillStick™ DNEA Drive (Annual Plan)</span>
-                        </li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Up to 5 Language Profiles</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Advanced Sleep Learning (Theta + Gamma Waves)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Full DNEA™ Soundscape Library (50+)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>NeuroDash™ Biometric AI Tutor</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Priority Email Support</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Includes SkillStick™ DNEA Drive (Annual Plan)</span></li>
                     </ul>
-                    <button class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium neon-button">
+                    <a href="mailto:Easyzzlabs@gmail.com?subject=Neuro-Pioneer%20Plan%20Signup" class="w-full neon-button bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium inline-block text-center">
                         Become a Pioneer
-                    </button>
+                    </a>
                 </div>
                 
-                <!-- NeuroOverlord -->
                 <div class="pricing-card bg-gray-900 rounded-xl p-8 border border-gray-800">
                     <h3 class="text-2xl font-bold mb-2">Polyglot Elite</h3>
                     <p class="text-gray-400 mb-6 text-sm">For language domination & cognitive mastery</p>
                     <div class="text-4xl font-bold mb-1 glow-text">$99<span class="text-lg text-gray-400">/mo</span></div>
                     <p class="text-xs text-gray-500 mb-6">Or $999 annually (save $189)</p>
                     <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Unlimited Language Profiles</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Customizable Frequency Entrainment (Alpha, Beta, Delta)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>AI Soundscape Generation Studio</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>24/7 Dedicated Neuro-Concierge Support</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>Exclusive Beta Access & Research Participation</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mt-1 mr-3"></i>
-                            <span>EasyZz SleepBand Pro & SkillStick™ Included</span>
-                        </li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Unlimited Language Profiles</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Customizable Frequency Entrainment (Alpha, Beta, Delta)</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>AI Soundscape Generation Studio</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>24/7 Dedicated Neuro-Concierge Support</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>Exclusive Beta Access & Research Participation</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-400 mt-1 mr-3"></i><span>EasyZz SleepBand Pro & SkillStick™ Included</span></li>
                     </ul>
-                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-medium neon-button">
+                    <a href="mailto:Easyzzlabs@gmail.com?subject=Polyglot%20Elite%20Plan%20Signup" class="w-full neon-button bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-medium inline-block text-center">
                         Achieve Elite Status
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -801,49 +741,26 @@
                 <div class="testimonial-card bg-gray-800 rounded-xl p-8 border border-gray-700">
                     <div class="flex items-center mb-4">
                         <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 border-2 border-green-500">
-                        <div>
-                            <h4 class="font-bold">Javier R.</h4>
-                            <p class="text-sm text-gray-400">Software Engineer, Barcelona</p>
-                        </div>
+                        <div><h4 class="font-bold">Javier R.</h4><p class="text-sm text-gray-400">Software Engineer, Barcelona</p></div>
                     </div>
-                    <p class="text-gray-300 italic mb-6 text-sm">
-                        "Used LinguaFlow for Japanese before a Tokyo trip. My sleep-learned phrases actually impressed a ramen chef. I still can't believe it. The DNEA for Python concepts on my commute is a game-changer too."
-                    </p>
-                    <div class="flex">
-                        <i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i>
-                    </div>
+                    <p class="text-gray-300 italic mb-6 text-sm">"Used LinguaFlow for Japanese before a Tokyo trip. My sleep-learned phrases actually impressed a ramen chef. I still can't believe it. The DNEA for Python concepts on my commute is a game-changer too."</p>
+                    <div class="flex"><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i></div>
                 </div>
-                
                 <div class="testimonial-card bg-gray-800 rounded-xl p-8 border border-gray-700">
                      <div class="flex items-center mb-4">
                         <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 border-2 border-blue-500">
-                        <div>
-                            <h4 class="font-bold">Dr. Anya Sharma</h4>
-                            <p class="text-sm text-gray-400">Neuroscientist (Yes, a real one)</p>
-                        </div>
+                        <div><h4 class="font-bold">Dr. Anya Sharma</h4><p class="text-sm text-gray-400">Neuroscientist (Yes, a real one)</p></div>
                     </div>
-                    <p class="text-gray-300 italic mb-6 text-sm">
-                        "Initially skeptical, but the adherence to TMR protocols and the EEG-sync quality is impressive for a consumer product. My French has improved noticeably with minimal conscious effort. The sleep architecture data is also surprisingly accurate."
-                    </p>
-                    <div class="flex">
-                        <i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star-half-alt text-yellow-400"></i>
-                    </div>
+                    <p class="text-gray-300 italic mb-6 text-sm">"Initially skeptical, but the adherence to TMR protocols and the EEG-sync quality is impressive for a consumer product. My French has improved noticeably with minimal conscious effort. The sleep architecture data is also surprisingly accurate."</p>
+                    <div class="flex"><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star-half-alt text-yellow-400"></i></div>
                 </div>
-                
                 <div class="testimonial-card bg-gray-800 rounded-xl p-8 border border-gray-700">
                     <div class="flex items-center mb-4">
                         <img src="https://randomuser.me/api/portraits/lego/1.jpg" alt="User Avatar" class="w-12 h-12 rounded-full mr-4 border-2 border-purple-500">
-                        <div>
-                            <h4 class="font-bold">PolyglotPat_77</h4>
-                            <p class="text-sm text-gray-400">r/languagelearning Mod</p>
-                        </div>
+                        <div><h4 class="font-bold">PolyglotPat_77</h4><p class="text-sm text-gray-400">r/languagelearning Mod</p></div>
                     </div>
-                    <p class="text-gray-300 italic mb-6 text-sm">
-                        "I've tried every app. LinguaFlow is the first that feels like it's actually augmenting my brain, not just my screen time. The HoloCafé VR practice with DNEA is like stepping into a cyberpunk Berlitz. My cat still only speaks Meowlish though."
-                    </p>
-                     <div class="flex">
-                        <i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="far fa-star text-yellow-400"></i>
-                    </div>
+                    <p class="text-gray-300 italic mb-6 text-sm">"I've tried every app. LinguaFlow is the first that feels like it's actually augmenting my brain, not just my screen time. The HoloCafé VR practice with DNEA is like stepping into a cyberpunk Berlitz. My cat still only speaks Meowlish though."</p>
+                     <div class="flex"><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="far fa-star text-yellow-400"></i></div>
                 </div>
             </div>
         </div>
@@ -858,68 +775,24 @@
             <p class="section-subtitle">
                Our methodologies are grounded in peer-reviewed research and validated through rigorous testing. We're transparent about what works, and why.
             </p>
-            
             <div class="grid md:grid-cols-2 gap-12 items-start">
                 <div>
                     <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 mb-8 neon-border">
                         <h3 class="text-xl font-bold mb-4 text-green-400">Core Scientific Principles</h3>
                         <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="bg-green-900 bg-opacity-30 rounded-lg p-3 mr-4">
-                                    <i class="fas fa-bed text-green-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold mb-1">Targeted Memory Reactivation (TMR)</h4>
-                                    <p class="text-gray-400 text-sm">Cues are delivered during NREM Stage 3 sleep, precisely timed with slow-wave oscillations to reinforce memory traces. (Ref: Hu et al., 2020, *Nature Neuroscience*).</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-blue-900 bg-opacity-30 rounded-lg p-3 mr-4">
-                                    <i class="fas fa-wave-square text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold mb-1">Theta-Gamma Neural Entrainment</h4>
-                                    <p class="text-gray-400 text-sm">40Hz gamma bursts are phase-locked to endogenous theta waves (4-8Hz) to promote synaptic plasticity and information binding. (Ref: Iaccarino et al., 2016, *Nature* on 40Hz gamma).</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-purple-900 bg-opacity-30 rounded-lg p-3 mr-4">
-                                    <i class="fas fa-shield-alt text-purple-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold mb-1">Ethical AI & Sleep Integrity</h4>
-                                    <p class="text-gray-400 text-sm">Our algorithms prioritize sleep quality. Arousal detection systems (EEG, HRV, Accelerometer) auto-pause cues to ensure restorative sleep. IRB-reviewed protocols for all research phases.</p>
-                                </div>
-                            </div>
+                            <div class="flex items-start"><div class="bg-green-900 bg-opacity-30 rounded-lg p-3 mr-4"><i class="fas fa-bed text-green-400"></i></div><div><h4 class="font-bold mb-1">Targeted Memory Reactivation (TMR)</h4><p class="text-gray-400 text-sm">Cues are delivered during NREM Stage 3 sleep, precisely timed with slow-wave oscillations to reinforce memory traces. (Ref: Hu et al., 2020, *Nature Neuroscience*).</p></div></div>
+                            <div class="flex items-start"><div class="bg-blue-900 bg-opacity-30 rounded-lg p-3 mr-4"><i class="fas fa-wave-square text-blue-400"></i></div><div><h4 class="font-bold mb-1">Theta-Gamma Neural Entrainment</h4><p class="text-gray-400 text-sm">40Hz gamma bursts are phase-locked to endogenous theta waves (4-8Hz) to promote synaptic plasticity and information binding. (Ref: Iaccarino et al., 2016, *Nature* on 40Hz gamma).</p></div></div>
+                            <div class="flex items-start"><div class="bg-purple-900 bg-opacity-30 rounded-lg p-3 mr-4"><i class="fas fa-shield-alt text-purple-400"></i></div><div><h4 class="font-bold mb-1">Ethical AI & Sleep Integrity</h4><p class="text-gray-400 text-sm">Our algorithms prioritize sleep quality. Arousal detection systems (EEG, HRV, Accelerometer) auto-pause cues to ensure restorative sleep. IRB-reviewed protocols for all research phases.</p></div></div>
                         </div>
                     </div>
                 </div>
-                
                 <div>
                     <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 neon-border">
                         <h3 class="text-xl font-bold mb-6 text-green-400">Data-Driven Efficacy: The LinguaFlow Difference</h3>
                         <div class="space-y-6">
-                            <div>
-                                <h4 class="font-bold text-blue-400 mb-1 flex justify-between items-center"><span>Vocabulary Recall Boost (TMR)</span> <span class="text-green-300 glow-text text-lg">+37.2%</span></h4>
-                                <p class="text-gray-400 text-sm mb-2">Compared to control group (no cues) after 1 week. (Internal Double-Blind Study, N=128)</p>
-                                <div class="h-2 bg-gray-800 rounded-full">
-                                    <div class="h-2 bg-gradient-to-r from-green-500 to-green-400 rounded-full" style="width: 87%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-blue-400 mb-1 flex justify-between items-center"><span>Time to Conversational Fluency</span> <span class="text-green-300 glow-text text-lg">-23.5%</span></h4>
-                                <p class="text-gray-400 text-sm mb-2">Reduction in hours of active study required to reach B1 level (CEFR) for Spanish. (LinguaFlow Pro Users, N=67)</p>
-                                <div class="h-2 bg-gray-800 rounded-full">
-                                     <div class="h-2 bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width: 76.5%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-blue-400 mb-1 flex justify-between items-center"><span>Reported Learning Anxiety</span> <span class="text-green-300 glow-text text-lg">-18.9%</span></h4>
-                                <p class="text-gray-400 text-sm mb-2">Decrease in GAD-7 scores for users utilizing infrasound & biometric feedback features. (Self-Reported Data, N=210)</p>
-                                <div class="h-2 bg-gray-800 rounded-full">
-                                     <div class="h-2 bg-gradient-to-r from-purple-500 to-purple-400 rounded-full" style="width: 81.1%"></div>
-                                </div>
-                            </div>
+                            <div><h4 class="font-bold text-blue-400 mb-1 flex justify-between items-center"><span>Vocabulary Recall Boost (TMR)</span> <span class="text-green-300 glow-text text-lg">+37.2%</span></h4><p class="text-gray-400 text-sm mb-2">Compared to control group (no cues) after 1 week. (Internal Double-Blind Study, N=128)</p><div class="h-2 bg-gray-800 rounded-full"><div class="h-2 bg-gradient-to-r from-green-500 to-green-400 rounded-full" style="width: 87%"></div></div></div>
+                            <div><h4 class="font-bold text-blue-400 mb-1 flex justify-between items-center"><span>Time to Conversational Fluency</span> <span class="text-green-300 glow-text text-lg">-23.5%</span></h4><p class="text-gray-400 text-sm mb-2">Reduction in hours of active study required to reach B1 level (CEFR) for Spanish. (LinguaFlow Pro Users, N=67)</p><div class="h-2 bg-gray-800 rounded-full"><div class="h-2 bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" style="width: 76.5%"></div></div></div>
+                            <div><h4 class="font-bold text-blue-400 mb-1 flex justify-between items-center"><span>Reported Learning Anxiety</span> <span class="text-green-300 glow-text text-lg">-18.9%</span></h4><p class="text-gray-400 text-sm mb-2">Decrease in GAD-7 scores for users utilizing infrasound & biometric feedback features. (Self-Reported Data, N=210)</p><div class="h-2 bg-gray-800 rounded-full"><div class="h-2 bg-gradient-to-r from-purple-500 to-purple-400 rounded-full" style="width: 81.1%"></div></div></div>
                         </div>
                     </div>
                 </div>
@@ -938,13 +811,13 @@
                 Join thousands of neuro-pioneers transforming wasted sleep into accelerated learning. Your future fluent, multi-skilled self is just a night away.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="neon-button bg-gradient-to-r from-green-400 to-green-600 text-black px-8 py-4 rounded-full font-bold text-lg">
+                <a href="mailto:Easyzzlabs@gmail.com?subject=Claim%20Early%20Access%20Spot" class="neon-button bg-gradient-to-r from-green-400 to-green-600 text-black px-8 py-4 rounded-full font-bold text-lg">
                     Claim Your Early Access Spot → 
                     <span class="ml-2 text-xs bg-black bg-opacity-50 text-white px-2 py-1 rounded-full">Only 237 Left!</span>
-                </button>
-                <button class="neon-button border-2 border-green-400 text-white px-8 py-4 rounded-full font-bold text-lg">
+                </a>
+                <a href="#science" class="neon-button border-2 border-green-400 text-white px-8 py-4 rounded-full font-bold text-lg">
                     Explore Our Research <i class="fas fa-book-open ml-2"></i>
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -958,17 +831,14 @@
                         <i class="fas fa-brain text-3xl text-green-400 mr-2"></i>
                         <span class="text-xl font-bold text-white">EasyZz <span class="text-green-400">LinguaFlow</span></span>
                     </div>
-                    <p class="text-gray-400 text-sm">
-                        Pioneering Cognitive Enhancement through Neuroscience & Ethical Innovation.
-                    </p>
+                    <p class="text-gray-400 text-sm">Pioneering Cognitive Enhancement through Neuroscience & Ethical Innovation.</p>
                     <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors"><i class="fab fa-discord fa-lg"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors"><i class="fab fa-youtube fa-lg"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-green-400 transition-colors"><i class="fab fa-reddit-alien fa-lg"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-400 transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-400 transition-colors"><i class="fab fa-discord fa-lg"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-400 transition-colors"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-400 transition-colors"><i class="fab fa-reddit-alien fa-lg"></i></a>
                     </div>
                 </div>
-                
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-4">Product Suite</h3>
                     <ul class="space-y-2">
@@ -976,35 +846,30 @@
                         <li><a href="#features" class="text-gray-400 hover:text-green-400 text-sm neon-link">EasyZz SleepBand Pro</a></li>
                         <li><a href="#features" class="text-gray-400 hover:text-green-400 text-sm neon-link">SkillStick™ DNEA Drive</a></li>
                         <li><a href="#pricing" class="text-gray-400 hover:text-green-400 text-sm neon-link">Pricing Plans</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Integrations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Integrations (Coming Soon)</a></li>
                     </ul>
                 </div>
-                
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-4">Company</h3>
                     <ul class="space-y-2">
                         <li><a href="#science" class="text-gray-400 hover:text-green-400 text-sm neon-link">Our Science</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Research Papers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Careers <span class="text-xs bg-green-500 text-black px-1.5 py-0.5 rounded-full ml-1">Hiring!</span></a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Research Papers (Coming Q3)</a></li>
+                        <li><a href="mailto:Easyzzlabs@gmail.com?subject=Career%20Inquiry%20at%20EasyZz%20LinguaFlow" class="text-gray-400 hover:text-green-400 text-sm neon-link">Careers <span class="text-xs bg-green-500 text-black px-1.5 py-0.5 rounded-full ml-1">Hiring!</span></a></li>
                         <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Press Kit</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-green-400 text-sm neon-link">Contact Us</a></li>
+                        <li><a href="mailto:Easyzzlabs@gmail.com?subject=Contact%20Inquiry%20for%20EasyZz%20LinguaFlow" class="text-gray-400 hover:text-green-400 text-sm neon-link">Contact Us</a></li>
                     </ul>
                 </div>
-                
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-4">Join The Neuro-Revolution</h3>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Get exclusive updates, research insights, and a FREE 'Brain Boost' audio track. No spam, just synaptic sparks.
-                    </p>
-                    <form class="flex">
-                        <input type="email" placeholder="your.email@domain.com" class="bg-gray-800 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-green-500 w-full text-sm border border-gray-700">
+                    <p class="text-gray-400 text-sm mb-4">Get exclusive updates, research insights, and a FREE 'Brain Boost' audio track. No spam, just synaptic sparks.</p>
+                    <form action="mailto:Easyzzlabs@gmail.com?subject=Newsletter%20Signup%20for%20EasyZz%20LinguaFlow" method="post" enctype="text/plain" class="flex">
+                        <input type="email" name="email" placeholder="your.email@domain.com" required class="bg-gray-800 text-white px-4 py-2 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-green-500 w-full text-sm border border-gray-700">
                         <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-r-lg text-sm neon-button">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
                 </div>
             </div>
-            
             <div class="pt-8 border-t border-gray-800">
                 <div class="md:flex md:items-center md:justify-between">
                     <div class="flex items-center space-x-4 mb-4 md:mb-0 text-xs text-gray-500">
@@ -1020,9 +885,7 @@
                         <a href="#" class="ml-2 text-gray-500 hover:text-green-400 text-xs neon-link">Terms of Service</a>
                     </div>
                 </div>
-                <div class="mt-4 text-xs text-gray-600">
-                    EasyZz LinguaFlow is a cognitive enhancement tool and is not intended to diagnose, treat, cure, or prevent any medical condition or sleep disorder. Results may vary based on individual factors and adherence to protocols. May cause spontaneous multilingual conversations and an insatiable curiosity.
-                </div>
+                <div class="mt-4 text-xs text-gray-600">EasyZz LinguaFlow is a cognitive enhancement tool and is not intended to diagnose, treat, cure, or prevent any medical condition or sleep disorder. Results may vary based on individual factors and adherence to protocols. May cause spontaneous multilingual conversations and an insatiable curiosity.</div>
             </div>
         </div>
     </footer>
@@ -1031,21 +894,15 @@
     <div id="lullaby" class="hidden-lullaby">
         <div class="flex justify-between items-center mb-2">
             <span class="text-green-400 font-medium">Secret Dev Lullaby</span>
-            <button onclick="closeLullaby()" class="text-gray-400 hover:text-white">
-                <i class="fas fa-times"></i>
-            </button>
+            <button onclick="closeLullaby()" class="text-gray-400 hover:text-white"><i class="fas fa-times"></i></button>
         </div>
         <div class="flex items-center">
             <i class="fas fa-code text-yellow-300 mr-2"></i>
             <span class="text-sm">"Bohemian Rhapsody" (8-bit Chiptune)</span>
         </div>
         <div class="mt-2 flex items-center">
-            <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-xs mr-2 neon-button">
-                <i class="fas fa-play"></i> Play
-            </button>
-            <div class="w-full bg-gray-700 rounded-full h-1.5">
-                <div class="bg-green-500 h-1.5 rounded-full" style="width: 30%"></div>
-            </div>
+            <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-xs mr-2 neon-button"><i class="fas fa-play"></i> Play</button>
+            <div class="w-full bg-gray-700 rounded-full h-1.5"><div class="bg-green-500 h-1.5 rounded-full" style="width: 30%"></div></div>
         </div>
     </div>
 
@@ -1064,7 +921,7 @@
                 
                 indicators.forEach((indicator, index) => {
                     indicator.classList.toggle('bg-gray-700', index !== currentIndex);
-                    indicator.classList.remove('bg-green-500', 'bg-blue-500', 'bg-purple-500'); // Clear previous active colors
+                    indicator.classList.remove('bg-green-500', 'bg-blue-500', 'bg-purple-500');
                     if (index === currentIndex) {
                         if (index === 0) indicator.classList.add('bg-green-500');
                         else if (index === 1) indicator.classList.add('bg-blue-500');
@@ -1073,30 +930,24 @@
                 });
             }
 
-            window.moveCarousel = function(direction) { // Expose to global scope for onclick
+            window.moveCarousel = function(direction) {
                 if (!items || items.length === 0) return;
                 currentIndex = (currentIndex + direction + items.length) % items.length;
                 updateCarousel();
             }
 
-            window.moveCarouselTo = function(index) { // Expose to global scope for onclick
+            window.moveCarouselTo = function(index) {
                 if (!items || items.length === 0) return;
                 currentIndex = index;
                 updateCarousel();
             }
             
-            let autoRotateInterval = setInterval(() => {
-                moveCarousel(1);
-            }, 7000);
+            let autoRotateInterval = setInterval(() => { moveCarousel(1); }, 7000);
 
             if (carousel) {
                 carousel.addEventListener('mouseenter', () => clearInterval(autoRotateInterval));
-                carousel.addEventListener('mouseleave', () => {
-                    autoRotateInterval = setInterval(() => {
-                        moveCarousel(1);
-                    }, 7000);
-                });
-                updateCarousel(); // Initial call
+                carousel.addEventListener('mouseleave', () => { autoRotateInterval = setInterval(() => { moveCarousel(1); }, 7000); });
+                updateCarousel();
             }
             
             // Moon click easter egg
@@ -1107,12 +958,8 @@
             if (moon) {
                 moon.addEventListener('click', () => {
                     moon.classList.add('clicked');
-                    setTimeout(() => {
-                        moon.classList.remove('clicked');
-                    }, 500);
-                    
+                    setTimeout(() => { moon.classList.remove('clicked'); }, 500);
                     clickCount++;
-                    
                     if (clickCount === 3) {
                         if (lullaby) lullaby.style.display = 'block';
                         clickCount = 0;
@@ -1120,39 +967,38 @@
                 });
             }
             
-            window.closeLullaby = function() { // Expose to global scope for onclick
-                if (lullaby) lullaby.style.display = 'none';
-            }
+            window.closeLullaby = function() { if (lullaby) lullaby.style.display = 'none'; }
             
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(this.getAttribute('href'));
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+            // Smooth scrolling for anchor links (already done with CSS scroll-behavior: smooth)
+            // If you need JS for offsets or more complex scrolling:
+            // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            //     anchor.addEventListener('click', function (e) {
+            //         e.preventDefault();
+            //         const targetElement = document.querySelector(this.getAttribute('href'));
+            //         if (targetElement) {
+            //             targetElement.scrollIntoView({ behavior: 'smooth' });
+            //         }
+            //     });
+            // });
 
             // Add a keyframe animation for progress bar if it doesn't exist
             const styleSheet = document.styleSheets[0];
             let progressLoadExists = false;
             for (let i = 0; i < styleSheet.cssRules.length; i++) {
-                if (styleSheet.cssRules[i].name === 'progressLoad') {
+                // Check if cssRules[i] is a CSSKeyframesRule
+                if (styleSheet.cssRules[i] instanceof CSSKeyframesRule && styleSheet.cssRules[i].name === 'progressLoad') {
                     progressLoadExists = true;
                     break;
                 }
             }
             if (!progressLoadExists) {
-                styleSheet.insertRule(`
-                    @keyframes progressLoad {
-                        0% { width: 0%; }
-                        100% { width: 75%; }
-                    }
-                `, styleSheet.cssRules.length);
+                try {
+                    styleSheet.insertRule(`
+                        @keyframes progressLoad { 0% { width: 0%; } 100% { width: 75%; } }
+                    `, styleSheet.cssRules.length);
+                } catch (e) {
+                    console.error("Failed to insert CSS rule:", e);
+                }
             }
 
             // EEG Canvas Script
@@ -1162,35 +1008,40 @@
                 let animationId;
 
                 function resizeCanvas() {
-                    canvas.width = canvas.offsetWidth * window.devicePixelRatio; // Use window.devicePixelRatio
+                    if (!canvas.offsetWidth || !canvas.offsetHeight) return; // Canvas not visible
+                    canvas.width = canvas.offsetWidth * window.devicePixelRatio;
                     canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-                    ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0); // Simpler way to scale
+                    ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
                 }
 
                 function drawEEG() {
-                    ctx.clearRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio); // Clear based on logical size
+                    const logicalWidth = canvas.width / window.devicePixelRatio;
+                    const logicalHeight = canvas.height / window.devicePixelRatio;
+                    if (!logicalWidth || !logicalHeight) { // If canvas size is 0, skip drawing
+                        animationId = requestAnimationFrame(drawEEG);
+                        return;
+                    }
+
+                    ctx.clearRect(0, 0, logicalWidth, logicalHeight);
                     
                     const frequencies = {
-                        theta: { amp: 30, freq: 0.8, color: '#6eff96', offset: 0 }, // Adjusted freq for visual appeal
-                        gamma: { amp: 15, freq: 5, color: '#63b3ed', offset: Math.PI / 2 },
-                        alpha: { amp: 20, freq: 2, color: '#a78bfa', offset: Math.PI }
+                        theta: { amp: logicalHeight * 0.15, freq: 0.8, color: '#6eff96', offset: 0 },
+                        gamma: { amp: logicalHeight * 0.08, freq: 5, color: '#63b3ed', offset: Math.PI / 2 },
+                        alpha: { amp: logicalHeight * 0.1, freq: 2, color: '#a78bfa', offset: Math.PI }
                     };
 
                     const time = Date.now() * 0.002;
-                    const logicalWidth = canvas.width / window.devicePixelRatio;
-                    const logicalHeight = canvas.height / window.devicePixelRatio;
 
-                    Object.values(frequencies).forEach((wave, i) => {
+                    Object.values(frequencies).forEach((wave) => {
                         ctx.beginPath();
                         ctx.strokeStyle = wave.color;
-                        ctx.lineWidth = 1.5; // Thinner lines for clarity
+                        ctx.lineWidth = 1.5;
                         
                         for(let x = 0; x < logicalWidth; x++) {
-                            // More complex wave for visual interest
                             const yBase = logicalHeight / 2;
                             const mainWave = Math.sin(x * wave.freq * 0.05 + time + wave.offset) * wave.amp;
-                            const noise = (Math.random() - 0.5) * wave.amp * 0.1; // Smaller noise
-                            const modulation = Math.sin(x * 0.01 + time * 0.5) * wave.amp * 0.2; // Slow modulation
+                            const noise = (Math.random() - 0.5) * wave.amp * 0.1;
+                            const modulation = Math.sin(x * 0.01 + time * 0.5) * wave.amp * 0.2;
                             const y = yBase + mainWave + noise + modulation;
                             
                             if(x === 0) ctx.moveTo(x, y);
@@ -1201,18 +1052,37 @@
 
                     animationId = requestAnimationFrame(drawEEG);
                 }
+                
+                // Use Intersection Observer to only run animation when canvas is visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            if (!animationId) { // Start animation if not already running
+                                resizeCanvas(); 
+                                drawEEG();
+                            }
+                        } else {
+                            if (animationId) { // Pause animation
+                                cancelAnimationFrame(animationId);
+                                animationId = null;
+                            }
+                        }
+                    });
+                }, { threshold: 0.1 }); // Trigger when 10% of element is visible
 
-                window.addEventListener('resize', resizeCanvas);
-                resizeCanvas(); // Call initially
-                drawEEG(); // Start animation
+                observer.observe(canvas);
+                window.addEventListener('resize', () => {
+                    if (canvas.offsetParent !== null) resizeCanvas(); // Resize only if visible
+                });
+                // Initial resize if visible
+                if (canvas.offsetParent !== null) resizeCanvas();
 
-                // Cleanup - This is good but might not fire on all tab closures/navigations.
-                // Consider pausing animation if canvas is not visible (Intersection Observer).
-                window.addEventListener('beforeunload', () => { // Changed from document to window
+
+                window.addEventListener('beforeunload', () => {
                     if (animationId) cancelAnimationFrame(animationId);
+                    observer.unobserve(canvas); // Clean up observer
                 });
             }
-
 
             // Feature Card Hover Effect Script
             document.querySelectorAll('.feature-card').forEach(card => {
@@ -1220,7 +1090,6 @@
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
-                    
                     card.style.setProperty('--mouse-x', `${x}px`);
                     card.style.setProperty('--mouse-y', `${y}px`);
                 });
@@ -1232,13 +1101,13 @@
                 button.addEventListener('click', () => {
                     sleepStageButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    // Here you could also update the EEG simulation based on data-stage
-                    // For example: adjust amplitudes/frequencies in the drawEEG function
                     console.log("Simulating sleep stage:", button.dataset.stage);
+                    // Potentially call a function here to update EEG wave parameters
+                    // updateEEGSimulationParameters(button.dataset.stage); 
                 });
             });
 
-        }); // End of DOMContentLoaded
+        });
     </script>
 </body>
 </html>
